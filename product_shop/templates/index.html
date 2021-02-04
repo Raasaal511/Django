@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% extends 'basic.html' %}
+{% load static %}
+
+{% block content %}
+<div>Категории:
+
+    {% for category in categories %}
+    <a href="{% url 'filter_by_category' category.pk %}">{{ category }}</a>
+    {% endfor %}
+
+</div>
+<div class="products">
+
+
+    {% for product in products %}
+
+    <a href="{% url 'detail_product' product.pk %}">
+
+        <div class="product">
+
+            <img src="{{ product.image.url }}" alt="" width="220" height="170">
+
+            <p class="mt-2">Продукт: {{ product.name }}</p>
+            <p>Цена: {{ product.price }}</p>
+
+        </div>
+
+    </a>
+
+    {% empty %}
+
+    <p>This null</p>
+
+    {% endfor %}
+
+</div>
+{% endblock %}
+
+</body>
+</html>

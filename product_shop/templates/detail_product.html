@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'basic.html' %}
+
+{% block content %}
+    <h1>Обзор продукта: {{ detail_product }}</h1>
+
+    <h2>Владелец: {{ product.author }}</h2>
+
+{% if request.user == product.author %}
+<a href="{% url 'delete_product' product.pk %}">Delete</a>
+<a href="{% url 'update_post' product.pk %}">Update</a>
+{% endif %}
+
+{% endblock %}
+</body>
+</html>

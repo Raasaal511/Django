@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body class="mr-2 ml-2">
+
+<ul class="nav mt-3 mb-2">
+
+    <li class="nav-item  mr-3">
+        <a href="{% url 'view_products' %}">Главная</a>
+    </li>
+
+    {% if user.is_authenticated %}
+
+    <li class="nav-item  mr-3">
+        <a href="{% url 'create_post' %}">Добавить продукт</a>
+    </li>
+
+    <li class="nav-item mr-3">
+        <a href="{% url 'logout' %}">Выйти</a>
+    </li>
+    <li class="nav-item  mr-4 text-right">
+        <a href="{% url 'profile' %}">Профиль: {{ request.user }}</a>
+    </li>
+
+     {% else %}
+
+    <li class="nav-item  mr-3">
+         <a href="{% url 'user_login' %}">Авторизация</a>
+    </li>
+
+    <li class="nav-item mr-3">
+        <a href="{% url 'register' %}">Регистрация</a>
+    </li>
+
+    {% endif %}
+
+</ul>
+
+<div class="w-350">
+    {% block content %}
+    {% endblock %}
+</div>
+
+
+
+</body>
+</html>

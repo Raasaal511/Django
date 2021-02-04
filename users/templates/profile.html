@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+{% extends 'basic.html' %}
+
+{% block content %}
+
+<div class="wrapper mt-4">
+
+    <h2 class="fs-1 text-center mb-3">Добро пожаловать</h2>
+
+    <div class="content d-inline">
+
+        <div class="user_info ml-3 border-bottom border-secondary ">
+
+
+
+
+            <div class="data_of_user d-flex">
+                <img class="d-flex" src="https://okeygeek.ru/wp-content/uploads/2020/03/no_avatar.png" alt="Туту должно было быть фото"
+                  width="280" height="250">
+                <div class="d-flex ml-3">
+
+                {% if user_view is None %}
+                    <h4 class="mt-3">User</h4>
+                {% else %}
+                    {{ user_views }}
+                {% endif %}
+
+                </div>
+            </div>
+
+            <div class="d-flex mr-3">
+                <div>
+                <p class="mt-2">Телефон: {{ user_views.phone }}</p>
+                <p class="mt-2">дата рождения: {{ user_views.date_birth }}</p>
+
+                <p class="mt-2">Email: {{ user_views.email }}</p>
+            </div>
+            <div class="ml-3">
+
+                <p class="mt-2">Страна: {{ user_views.country }}</p>
+                <p class="mt-2">Город: {{ user_views.city }}</p>
+
+               <input type="checkbox" class="mr-2">Пол: {{ user_views.gender }}
+                <input type="checkbox" class="ml-2">Пол: {{ user_views.gender }}
+            </div>
+            </div>
+        </div>
+
+        <div class="user_content mt-2">
+            {% if user_views.obout_user is None %}
+                <p>Вы можете расказать о себе</p>
+            {% else %}
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+</body>
+</html>

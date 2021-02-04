@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter</title>
+</head>
+<body>
+{% extends 'basic.html' %}
+
+{% block content %}
+<h1>Категория: {{ current_categories }} </h1>
+
+
+<div class="products">
+{% for filter_category in filter_categories %}
+
+
+<a href="{% url 'detail_product' filter_category.id %}">
+
+      <div class="product">
+          <img src="{{ filter_category.image.url }}" alt="" width="220" height="170">
+         <p>Продукт: {{ filter_category.name }}</p>
+         <p>Цена: {{ filter_category.price }}</p>
+  </div>
+
+
+</a>
+
+  {% empty %}
+    <p>This null</p>
+
+{% endfor %}
+</div>
+
+{% endblock %}
+
+</body>
+</html>
